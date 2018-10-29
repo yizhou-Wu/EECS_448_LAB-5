@@ -17,10 +17,16 @@
     if($result=$mysqli->query($query))
     {
       echo  "<table>";
+        echo "<tr>";
+        echo "<th>POST_ID&nbsp&nbsp </th>";
+        echo "<th>Content&nbsp&nbsp</th>";
+        echo "<th>Author_ID&nbsp </th>";
+        echo "<th>Delete? </th>";
+        echo "</tr>";
       while($row=$result->fetch_assoc())
       {
-        echo "<tr>";
-        echo "<td>POST_ID:</td><td>".$row["post_id"].",</td><td>Content:</td><td>".$row["content"].",</td><td>AUTHOR_ID:</td><td>".$row["author_id"]."</td><td>&nbsp Delete?<input type='checkbox' name='del[]' value=".(string)$row['post_id']."></td>";
+
+        echo "<td>".$row["post_id"]."</td><td>".$row["content"]."</td><td>".$row["author_id"]."</td><td><input type='checkbox' name='del[]' value=".(string)$row['post_id']."></td>";
         echo "</tr>";
       }
       echo "</table>";

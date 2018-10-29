@@ -23,8 +23,6 @@ if(count($post_id)!=0)
       echo "ERROR";
     }
   }
-
-
 }
 else {
   echo "Please make your choice.";

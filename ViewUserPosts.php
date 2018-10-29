@@ -9,20 +9,22 @@ if ($mysqli->connect_errno)
 $query="SELECT * FROM Posts WHERE author_id= '$user_id'";
 if($result=$mysqli->query($query))
 {
-  while($row=$result->fetch_assoc())
+  if(mysqli_num_rows($result)==0)
   {
-    echo"<table>";
-    echo"Posts:";
-    echo "<tr><td>"."#".$row["post_id"].":".$row["content"]."</td></tr>";
-    echo"</table>";
+      echo"Empty Posts";
   }
+  else
+    {
+      while($row=$result->fetch_assoc())
+      {
+        echo"<table>";
+        echo"Posts:";
+        echo "<tr><td>"."#".$row["post_id"].":".$row["content"]."</td></tr>";
+        echo"</table>";
+      }
+    }
 }
-else
-{
-  echo"<table>";
-  echo"<th>Empty Posts</th>";
-  echo "</table>";
-}
+
 
 /* close connection */
 $mysqli->close();
